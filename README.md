@@ -4,7 +4,7 @@ This repo contains an example web app written in [Clojure](https://clojure.org/)
 
 Clojure is a dynamic, general-purpose programming language from the Lisp family that runs on the Java Virtual Machine. You can build web apps in Clojure and deploy them to Azure App Service as a JAR file.
 
-## The guestbook application
+## The `guestbook` application
 
 This example application is a simple guestbook app where visitors can write messages about a site they visited. The data is stored and read from a PostgreSQL database on Azure which is created by a helper script.
 
@@ -18,6 +18,7 @@ This example application is a simple guestbook app where visitors can write mess
 
 Optional packages for local development
 
+* [Visual Studio Code](https://code.visualstudio.com/) with the [Calva](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva) extension for Clojure
 * Docker, used to run PostgreSQL in a Docker container
 * GNU sed, used to replace some entries in the `pom.xml` file before deploying. This is installed by default in most Linux distributions, and also in Git for Windows
 
