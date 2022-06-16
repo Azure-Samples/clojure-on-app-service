@@ -25,7 +25,7 @@ Optional packages for local development
 
 The following changes have been made from the [original guestbook app](https://github.com/luminus-framework/examples/tree/master/guestbook):
 
-* The `start-app` function from `core.clj` file has been updated to run the database migrations on the application startup, as explained in https://luminusweb.com/docs/deployment.html#heroku_deployment
+* The `start-app` function from `core.clj` file has been updated to run the database migrations on the application startup, as explained in the [deployment documentation](https://luminusweb.com/docs/deployment.html#heroku_deployment).
 
 * The migration file has been renamed to reflect that the file creates the `guestbook` table, instead of an `users` table.
 
