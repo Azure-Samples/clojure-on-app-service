@@ -6,7 +6,7 @@ Clojure is a dynamic, general-purpose programming language from the Lisp family 
 
 ## The guestbook application
 
-This example application is a simple guest book app where visitors can write messages about a site they visited. The data is stored and read from a PostgreSQL database on Azure which is created by a helper script.
+This example application is a simple guestbook app where visitors can write messages about a site they visited. The data is stored and read from a PostgreSQL database on Azure which is created by a helper script.
 
 ## Prerequisites
 
@@ -108,7 +108,7 @@ Run the following command line to use a Maven plugin which will detect and confi
 mvn com.microsoft.azure:azure-webapp-maven-plugin:2.5.0:config
 ```
 
-The command above will prompt you to create a new Web App or to use an existing one. **Choose the option `2` to use the existing Web App** that you created using the script in the previous step:
+The command above will prompt you to create a new Web App or to use an existing one. **Choose the option to use the existing Web App** that you created using the script in the previous step:
 
 ```
 $ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.5.0:config
@@ -119,12 +119,12 @@ $ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.5.0:config
 [INFO] It may take a few minutes to load all Java Web Apps, please be patient.
 Java SE Web Apps in subscription My Subscription:
 * 1: <create>
-  2: guestbook-25026 (linux, java 11-java11)
+  2: guestbook-2048 (linux, java 11-java11)
 Please choose a Java SE Web App [<create>]: 2 <== CHOOSE TO USE EXISTING APP
 Please confirm webapp properties
 Subscription Id : (...redacted...)
-AppName : guestbook-25026
-ResourceGroup : guestbook-25026-rg
+AppName : guestbook-2048
+ResourceGroup : guestbook-2048-rg
 Region : westus2
 PricingTier : Free_F1
 OS : Linux
@@ -169,7 +169,14 @@ sed -i 's/\*\.jar/guestbook\.jar/' pom.xml
 
 ```
 
-Now, generate the JAR file to be deployed with `lein uberjar`:
+Now, generate the JAR file to be deployed:
+
+```
+lein uberjar
+
+```
+
+The output will look like the following:
 
 ```
 $ lein uberjar
@@ -187,7 +194,14 @@ Created /home/user/Projects/azure/guestbook/target/uberjar/guestbook-0.1.0-SNAPS
 Created /home/user/Projects/azure/guestbook/target/uberjar/guestbook.jar
 ```
 
-Finally, you can deploy with `mvn azure-webapp:deploy`:
+Finally, you can deploy your app to App Service:
+
+```
+mvn azure-webapp:deploy
+
+```
+
+After a few seconds, it will show the deployment status and the URL of the application
 
 ```
 $ mvn azure-webapp:deploy
@@ -210,7 +224,7 @@ $ mvn azure-webapp:deploy
 [INFO] ------------------------------------------------------------------------
 ```
 
-Give it a minute for the application to deploy and warm up. The first time you visit the application you may see an error 500 because the migrations might have not completed, but after that it should work fine.
+Give it a minute for the application to deploy and warm up. The first time you visit the application you may see an error 500 because the migrations might have not completed, but after that it will work fine.
 
 If you want to delete the application and all the related resources, go to https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups then select the appropriate resource group and delete it.
 
